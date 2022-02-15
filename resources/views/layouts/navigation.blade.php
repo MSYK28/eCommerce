@@ -13,7 +13,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Shopping') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('cart')" :active="request()->routeIs('cart')">
+                        {{ __('Cart') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -44,6 +50,13 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                    </x-slot>
+
+                    <x-slot name="cart">
+                        {{-- Cart module --}}
+                        <x-dropdown-link :href="route('cart')">
+                            Cart
+                        </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>
             </div>
