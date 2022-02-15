@@ -25,69 +25,75 @@
                     </div> --}}
 
                     {{-- ITEMS IN CART --}}
-                    <div class="items_cart">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="flex flex-col" ) <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="shadow overflow-hidden border-b border gray-200 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Product ID </th>
+                                            {{-- <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Category </th> --}}
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Name </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Price </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Quantity </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                                <span class="">Action</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    {{-- @foreach ($cartItems as $item)
+                                        <tbody class="bg-white divide-y divide gray-200">
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    {{ $item['id'] }} </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900">
+                                                        {{ $item['name'] }} </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900">
+                                                        Visuals </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900">
+                                                        {{ \Cart::Session(auth()->id())->get($item->id) > getPriceSum() }}
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900">
+                                                        <form action="{{ route('cart.update', $item->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <input type="number" name="quantity"
+                                                                value="{{ $item->quantity }}"
+                                                                class="border-2 w-full p-4 rounded-lg">
+                                                            <input type="submit" value="save">
+                                                        </form>
+                                                    </div>
+                                                <td class="px-6 py-4 whitespace-nowrap text right text-sm font-medium">
+                                                    <a href="{{ route('cart.destroy', $item->id) }}"
+                                                        onclick="return confirm(" Are You Sure you want to Delete
+                                                        Item?')" class="text-red-500 hover:text red-600">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <!-- More items... -->
+                                        </tbody>
+                                    @endforeach --}}
+                                </table>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

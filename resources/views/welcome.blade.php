@@ -401,6 +401,8 @@
 
     </style> --}}
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/swiper-bundle.min.css') }}" rel="stylesheet">
     
@@ -525,7 +527,7 @@
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
-            </div> --}}
+        </div> --}}
         </div>
         <main class="main">
             <section class="home container" id="home">
