@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ProductsSeeder extends Seeder
 {
@@ -14,6 +17,10 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Products::factory(10)->create();
+        DB::table('products')->insert([
+            'name' => Str::random(10),
+            'price' => Str::random(10),
+            'quantity' => Str::random(10),
+        ]);
     }
 }

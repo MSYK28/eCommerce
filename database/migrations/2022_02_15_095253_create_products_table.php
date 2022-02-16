@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->string('name');
-            $table->string('price');
-            $table->string('quantity');
+            $table->integer('price');
+            $table->integer('quantity');
 
             $table->index('user_id');
         });
