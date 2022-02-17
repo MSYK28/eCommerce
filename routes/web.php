@@ -33,4 +33,12 @@ Route::get('/checkout', function() {
     return view('checkout');
 })->middleware(['auth'])->name('checkout');
 
+
+//ADMIN CONTROLLERS
+Route::middleware('auth', 'verified')->prefix('admin')->group(
+    function(){
+        Route::get('/index', function () {return view('admin.index');});
+        Route::get('/pages', function () {return view('admin.pages');});
+});
+
 require __DIR__.'/auth.php';
