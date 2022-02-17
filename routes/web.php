@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::get('/cart', function () {
     return view('cart');
@@ -40,5 +41,8 @@ Route::middleware('auth', 'verified')->prefix('admin')->group(
         Route::get('/index', function () {return view('admin.index');});
         Route::get('/pages', function () {return view('admin.pages');});
 });
+
+//PRODUCTS CONTROLLER
+Route::get('/dashboard', [App\Http\Controllers\ProductsController::class, 'index'])->middleware('auth')->name('dashboard');
 
 require __DIR__.'/auth.php';

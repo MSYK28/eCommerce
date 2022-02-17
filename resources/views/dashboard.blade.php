@@ -14,16 +14,18 @@
 
     <section class="section trick" id="trick">
         <div class="trick_container container grid">
+            @foreach ($products as $product)
             <div class="trick_content">
                 <img src="assets/img/trick-treat1-img.png" alt="" class="trick_img">
-                <h3 class="trick_title">Toffee</h3>
-                <span class="trick_subtitle">Sweet and sour candy</span>
-                <span class="trick_price">Ksh. 200</span>
+                <h3 class="trick_title">{{ $product->name }}</h3>
+                <span class="trick_subtitle">{{ $product->category }}</span>
+                <span class="trick_price">Ksh. {{ $product->price }}</span>
 
                 <button class="button trick_button">
                     <i class='bx bx-cart-alt trick_icon'></i>
                 </button>
             </div>
+            @endforeach
 
             <div class="trick_content">
                 <img src="assets/img/trick-treat2-img.png" alt="" class="trick_img">
