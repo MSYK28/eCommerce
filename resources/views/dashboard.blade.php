@@ -5,8 +5,17 @@
         </h2>
     </x-slot>
 
-    <section class="section trick" id="trick">
+    <div class="search_bar">
+        <div class="form">
+            <i class="fa fa-search"></i>
+            <input type="text" style="color: black; border: 2px solid black" class="form-control form-input" placeholder="Search anything...">
+            <span class="left-pan">
+                <i class="fa fa-microphone"></i>
+            </span>
+        </div>
+    </div>
 
+    <section class="section trick" id="trick">
         <div class="trick_container container grid">
             <div class="trick_content">
                 <img src="assets/img/trick-treat1-img.png" alt="" class="trick_img">

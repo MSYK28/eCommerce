@@ -9,8 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+
                     {{-- EMPTY CART --}}
-                    {{-- <div class="empty_cart">
+                    <div class="empty_cart">
                         <p style="color: black">
                             Oops! You dont have anything in your cart yet! <br>
                             <Button class="">
@@ -22,7 +23,7 @@
                                 </div>
                             </Button>
                         </p>
-                    </div> --}}
+                    </div>
 
                     {{-- ITEMS IN CART --}}
                     <div class="flex flex-col" ) <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -34,9 +35,9 @@
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Product ID </th>
-                                            {{-- <th scope="col"
+                                            <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Category </th> --}}
+                                                Category </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Name </th>
@@ -51,6 +52,28 @@
                                             </th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                1 </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Sweets </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Toffee </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                200 </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                1 </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                                <span class="">Remove</span>
+                                            </th>
+                                        </tr>
+                                    </tbody>
                                     {{-- @foreach ($cartItems as $item)
                                         <tbody class="bg-white divide-y divide gray-200">
                                             <tr>
