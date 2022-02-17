@@ -29,4 +29,8 @@ Route::get('/search_results', function () {
     return view('search_results');
 })->middleware(['auth'])->name('search_results');
 
+Route::get('/checkout', function() {
+    return view('checkout');
+})->middleware(['auth'])->name('checkout');
+
 require __DIR__.'/auth.php';

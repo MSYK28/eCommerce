@@ -9,9 +9,6 @@
         <div class="form">
             <i class="fa fa-search"></i>
             <input type="text" style="color: black; border: 2px solid black" class="form-control form-input" placeholder="Search anything...">
-            <span class="left-pan">
-                <i class="fa fa-microphone"></i>
-            </span>
         </div>
     </div>
 

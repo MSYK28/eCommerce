@@ -114,9 +114,38 @@
                                     @endforeach --}}
                                 </table>
                             </div>
+
+                            <div style="padding-top:40px">
+                                <table class="divide-y divide-gray-200 border-b border gray-200 sm:rounded-lg">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Total Cost
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                1OOO
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                {{-- CHECKOUT BUTTON --}}
+                                {{-- @if (cart !== 'empty') --}}
+                                    <div class="button empty_cart">
+                                        <button type="submit" onclick="location.href='{{ url('checkout') }}'">
+                                            Checkout
+                                        </button>
+                                    </div>
+                                {{-- @endif --}}
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
