@@ -25,12 +25,8 @@ Route::get('/cart', function () {
     return view('cart');
 })->middleware(['auth'])->name('cart');
 
-Route::get('/search_results', function () {
-    return view('search_results');
-})->middleware(['auth'])->name('search_results');
-
-Route::get('/checkout', function() {
-    return view('checkout');
-})->middleware(['auth'])->name('checkout');
+Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
+Route::patch('update-cart', 'ProductsController@update');
+Route::delete('remove-from-cart', 'ProductsController@remove');
 
 require __DIR__.'/auth.php';

@@ -21,6 +21,7 @@ class ProductsSeeder extends Seeder
             'name' => Str::random(10),
             'price' => Str::random(10),
             'quantity' => Str::random(10),
+
         ]);
     }
 }

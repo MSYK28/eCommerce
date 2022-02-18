@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('quantity');
-
+            $table->string('short_description');
+            $table->integer('category_id');
+            $table->mediumText('product_image')->nullable();
             $table->index('user_id');
         });
     }

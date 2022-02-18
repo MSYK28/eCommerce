@@ -56,7 +56,7 @@
                     <section class="swiper-slide">
                         <div class="home_content grid">
                             <div class="home_group">
-                                <img src="assets/img/home1-img.png" alt="" class="home_img">
+                                <img src="assets/img/dashboard1-img.png" alt="" class="home_img">
 
                                 <div class="home_indicator"></div>
                                 <div class="home_details-img">
@@ -90,7 +90,7 @@
                     <section class="swiper-slide">
                         <div class="home_content grid">
                             <div class="home_group">
-                                <img src="assets/img/home2-img.png" alt="" class="home_img">
+                                <img src="assets/img/dashboard2-img.png" alt="" class="home_img">
 
                                 <div class="home_indicator"></div>
                                 <div class="home_details-img">
@@ -122,7 +122,7 @@
                     <section class="swiper-slide">
                         <div class="home_content grid">
                             <div class="home_group">
-                                <img src="assets/img/home3-img.png" alt="" class="home_img">
+                                <img src="assets/img/dashboard3-img.png" alt="" class="home_img">
 
                                 <div class="home_indicator"></div>
                                 <div class="home_details-img">

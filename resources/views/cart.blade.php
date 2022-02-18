@@ -26,6 +26,7 @@
                     </div>
 
                     {{-- ITEMS IN CART --}}
+
                     <div class="flex flex-col" ) <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="shadow overflow-hidden border-b border gray-200 sm:rounded-lg">
@@ -53,26 +54,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $total = 0 ?>
+                                    @if(session('cart'))
+                                        @foreach(session('cart') as $id => $details)
+                                            <?php $details =;$total += $details['price'] * $details['quantity'] ?>
                                         <tr>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 1 </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Sweets </th>
+                                                {{ $details['name'] }}</th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Toffee </th>
+                                                {{ $details['price'] }} </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                200 </th>
+                                                {{ $details['quantity'] }} </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                1 </th>
+                                                {{ $details['price'] * $details['quantity'] }}</th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="">Remove</span>
                                             </th>
                                         </tr>
+                                        @endforeach
+                                    @endif
                                     </tbody>
                                     {{-- @foreach ($cartItems as $item)
                                         <tbody class="bg-white divide-y divide gray-200">
@@ -136,13 +143,13 @@
                                 </table>
 
                                 {{-- CHECKOUT BUTTON --}}
-                                {{-- @if (cart !== 'empty') --}}
+                                 @if (cart !== 'empty')
                                     <div class="button empty_cart">
                                         <button type="submit" onclick="location.href='{{ url('checkout') }}'">
                                             Checkout
                                         </button>
                                     </div>
-                                {{-- @endif --}}
+                                 @endif
                             </div>
                         </div>
                     </div>
@@ -151,3 +158,33 @@
         </div>
     </div>
 </x-app-layout>
+@section('scripts')
+    <script type="text/javascript">
+        $(".update-cart").click(function (e) {
+            e.preventDefault();
+            var ele = $(this);
+            $.ajax({
+                url: '{{ url('update-cart') }}',
+                method: "patch",
+                data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        });
+        $(".remove-from-cart").click(function (e) {
+            e.preventDefault();
+            var ele = $(this);
+            if(confirm("Are you sure")) {
+                $.ajax({
+                    url: '{{ url('remove-from-cart') }}',
+                    method: "DELETE",
+                    data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
+                    success: function (response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    </script>
+@endsection
