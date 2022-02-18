@@ -19,7 +19,10 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('cart')" :active="request()->routeIs('cart')">
-                        {{ __('Cart') }}
+                        {{-- <button type="button" style="color:black" class="btn btn-info" data-toggle="dropdown"> --}}
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span
+                                class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                        {{-- </button> --}}
                     </x-nav-link>
                 </div>
             </div>

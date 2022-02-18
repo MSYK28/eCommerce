@@ -8,23 +8,26 @@
     <div class="search_bar">
         <div class="form">
             <i class="fa fa-search"></i>
-            <input type="text" style="color: black; border: 2px solid black" class="form-control form-input" placeholder="Search anything...">
+            <input type="text" style="color: black; border: 2px solid black" class="form-control form-input"
+                placeholder="Search anything...">
         </div>
     </div>
 
     <section class="section trick" id="trick">
         <div class="trick_container container grid">
             @foreach ($products as $product)
-            <div class="trick_content">
-                <img src="assets/img/trick-treat1-img.png" alt="" class="trick_img">
-                <h3 class="trick_title">{{ $product->name }}</h3>
-                <span class="trick_subtitle">{{ $product->category }}</span>
-                <span class="trick_price">Ksh. {{ $product->price }}</span>
-
-                <button class="button trick_button">
-                    <i class='bx bx-cart-alt trick_icon'></i>
-                </button>
-            </div>
+                <div class="col-xs-18 col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <img src="{{ $product->image }}" alt="">
+                        <div class="caption">
+                            <h4>{{ $product->name }}</h4>
+                            <p>{{ $product->description }}</p>
+                            <p><strong>Price: </strong> {{ $product->price }}$</p>
+                            <p class="btn-holder"><a href="{{ route('add.to.cart', $product->id) }}"
+                                    class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                        </div>
+                    </div>
+                </div>
             @endforeach
 
             <div class="trick_content">

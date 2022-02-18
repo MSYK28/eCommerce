@@ -17,7 +17,19 @@ class Products extends Model
      */
     protected $fillable = [
         'name',
-        'price',
         'quantity',
+        'description',
+        'image',
+        'price',
+        'category'
     ];
+
+    public function price()
+    {
+    	return $this->hasOne(Price::class);
+    }
+    public function color()
+    {
+    	return $this->hasOne(Color::class);
+    }
 }

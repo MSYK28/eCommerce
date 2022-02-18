@@ -1,4 +1,4 @@
-<x-app-layout>
+ {{-- <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Cart
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    {{-- EMPTY CART --}}
+                    {{-- EMPTY CART --
                     <div class="empty_cart">
                         <p style="color: black">
                             Oops! You dont have anything in your cart yet! <br>
@@ -25,7 +25,7 @@
                         </p>
                     </div>
 
-                    {{-- ITEMS IN CART --}}
+                    {{-- ITEMS IN CART --
                     <div class="flex flex-col" ) <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="shadow overflow-hidden border-b border gray-200 sm:rounded-lg">
@@ -111,7 +111,7 @@
                                             </tr>
                                             <!-- More items... -->
                                         </tbody>
-                                    @endforeach --}}
+                                    @endforeach --
                                 </table>
                             </div>
 
@@ -136,13 +136,13 @@
                                 </table>
 
                                 {{-- CHECKOUT BUTTON --}}
-                                {{-- @if (cart !== 'empty') --}}
+ {{-- @if (cart !== 'empty') --
                                     <div class="button empty_cart">
                                         <button type="submit" onclick="location.href='{{ url('checkout') }}'">
                                             Checkout
                                         </button>
                                     </div>
-                                {{-- @endif --}}
+                                {{-- @endif --
                             </div>
                         </div>
                     </div>
@@ -150,4 +150,116 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-app-layout> --}}
+
+ @extends('layout')
+
+ @section('content')
+     <table id="cart" class="table table-hover table-condensed">
+         <thead>
+             <tr>
+                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                     Image </th> 
+                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                     Price </th>
+                 <th style="width:8%" scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                     Quantity </th>
+                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                     Subtotal </th>
+                 <th scope="col" class="relative px-6 py-3">
+                     <span class="">Action</span>
+                 </th>
+             </tr>
+         </thead>
+
+
+         <tbody style="color: black">
+             @php $total = 0 @endphp
+             @if (session('cart'))
+                 @foreach (session('cart') as $id => $details)
+                     @php $total += $details['price'] * $details['quantity'] @endphp
+                     <tr data-id="{{ $id }}">
+                         <td data-th="Product">
+                             <div class="row">
+                                 <div class="col-sm-3 hidden-xs"><img src="/assets/img/{{ $details['image'] }}" width="100"
+                                         height="100" class="img-responsive" /></div>
+                                 <div class="col-sm-9">
+                                     <h4 style="color:black" class="nomargin">{{ $details['name'] }}</h4>
+                                 </div>
+                             </div>
+                         </td>
+                         <td data-th="Price">${{ $details['price'] }}</td>
+                         <td data-th="Quantity">
+                             <input type="number" value="{{ $details['quantity'] }}"
+                                 class="form-control quantity update-cart" />
+                         </td>
+                         <td data-th="Subtotal" class="text-center">Ksh. {{ $details['price'] * $details['quantity'] }}
+                         </td>
+                         <td class="actions" data-th="">
+                            <button class="btn btn-danger btn-sm remove-from-cart">
+                                Remove                                 
+                            </button>
+                         </td>
+                     </tr>
+                 @endforeach
+             @endif
+         </tbody>
+         <tfoot style="color: black">
+             <tr>
+                 <td style="color: black" colspan="5" class="text-right">
+                     <h3><strong style="color: black">Total Ksh. {{ $total }}</strong></h3>
+                 </td>
+             </tr>
+             <tr>
+                 <td style="color: black" colspan="5" class="text-right">
+                     <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
+                         Shopping</a>
+                     <button class="btn btn-success">Checkout</button>
+                 </td>
+             </tr>
+         </tfoot>
+     </table>
+ @endsection
+
+ @section('scripts')
+     <script type="text/javascript">
+         $(".update-cart").change(function(e) {
+             e.preventDefault();
+
+             var ele = $(this);
+
+             $.ajax({
+                 url: '{{ route('update.cart') }}',
+                 method: "patch",
+                 data: {
+                     _token: '{{ csrf_token() }}',
+                     id: ele.parents("tr").attr("data-id"),
+                     quantity: ele.parents("tr").find(".quantity").val()
+                 },
+                 success: function(response) {
+                     window.location.reload();
+                 }
+             });
+         });
+
+         $(".remove-from-cart").click(function(e) {
+             e.preventDefault();
+
+             var ele = $(this);
+
+             if (confirm("Are you sure want to remove?")) {
+                 $.ajax({
+                     url: '{{ route('remove.from.cart') }}',
+                     method: "DELETE",
+                     data: {
+                         _token: '{{ csrf_token() }}',
+                         id: ele.parents("tr").attr("data-id")
+                     },
+                     success: function(response) {
+                         window.location.reload();
+                     }
+                 });
+             }
+         });
+     </script>
+ @endsection
