@@ -159,10 +159,11 @@
          <thead>
              <tr>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     Image </th> 
+                     Image </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                      Price </th>
-                 <th style="width:8%" scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                 <th style="width:8%" scope="col"
+                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                      Quantity </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                      Subtotal </th>
@@ -196,17 +197,17 @@
                          <td data-th="Subtotal" class="text-center">Ksh. {{ $details['price'] * $details['quantity'] }}
                          </td>
                          <td class="actions" data-th="">
-                            <button class="btn btn-danger btn-sm remove-from-cart">
-                                Remove                                 
-                            </button>
+                             <button class="btn btn-danger btn-sm remove-from-cart">
+                                 Remove
+                             </button>
                          </td>
                      </tr>
                  @endforeach
              @endif
          </tbody>
-         <tfoot style="color: black">
+         <tfoot>
              <tr>
-                 <td style="color: black" colspan="5" class="text-right">
+                 <td colspan="5" class="text-right">
                      <h3><strong style="color: black">Total Ksh. {{ $total }}</strong></h3>
                  </td>
              </tr>
@@ -214,7 +215,11 @@
                  <td style="color: black" colspan="5" class="text-right">
                      <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
                          Shopping</a>
-                     <button class="btn btn-success">Checkout</button>
+                     <div class="btn btn-success">
+                         <button type="submit" onclick="location.href='{{ url('checkout') }}'">
+                             Checkout 
+                         </button>
+                     </div>
                  </td>
              </tr>
          </tfoot>
