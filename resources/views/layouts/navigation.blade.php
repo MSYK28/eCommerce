@@ -25,6 +25,12 @@
                         {{-- </button> --}}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('orders')" :active="request()->routeIs('orders')">
+                        {{ __('My Orders') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -55,7 +61,7 @@
                         </form>
                     </x-slot>
 
-                    <x-slot name="cart">
+                    <x-slot name="">
                         {{-- Cart module --}}
                         <x-dropdown-link :href="route('cart')">
                             Cart

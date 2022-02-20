@@ -155,75 +155,106 @@
  @extends('layout')
 
  @section('content')
-     <table id="cart" class="table table-hover table-condensed">
-         <thead>
-             <tr>
-                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     Image </th>
-                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     Price </th>
-                 <th style="width:8%" scope="col"
-                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     Quantity </th>
-                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     Subtotal </th>
-                 <th scope="col" class="relative px-6 py-3">
-                     <span class="">Action</span>
-                 </th>
-             </tr>
-         </thead>
+     @if (!empty(session('cart')))
+         <table id="cart" class="table table-hover table-condensed">
+             <thead>
+                 <tr>
+                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                         Image </th>
+                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                         Name </th>
+                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                         Price </th>
+                     <th style="width:8%" scope="col"
+                         class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                         Quantity </th>
+                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                         Subtotal </th>
+                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                         <span class="">Action</span>
+                     </th>
+                 </tr>
+             </thead>
 
 
-         <tbody style="color: black">
-             @php $total = 0 @endphp
-             @if (session('cart'))
-                 @foreach (session('cart') as $id => $details)
-                     @php $total += $details['price'] * $details['quantity'] @endphp
-                     <tr data-id="{{ $id }}">
-                         <td data-th="Product">
-                             <div class="row">
-                                 <div class="col-sm-3 hidden-xs"><img src="/assets/img/{{ $details['image'] }}" width="100"
-                                         height="100" class="img-responsive" /></div>
-                                 <div class="col-sm-9">
-                                     <h4 style="color:black" class="nomargin">{{ $details['name'] }}</h4>
+             <tbody style="color: black">
+                 @php $total = 0 @endphp
+                 @if (session('cart'))
+                     @foreach (session('cart') as $id => $details)
+                         @php $total += $details['price'] * $details['quantity'] @endphp
+                         <tr data-id="{{ $id }}">
+                             <td data-th="Product">
+                                 <div scope="col"
+                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                     <img src="/assets/img/{{ $details['image'] }}" width="100" height="100"
+                                         class="img-responsive" />
                                  </div>
-                             </div>
-                         </td>
-                         <td data-th="Price">${{ $details['price'] }}</td>
-                         <td data-th="Quantity">
-                             <input type="number" value="{{ $details['quantity'] }}"
-                                 class="form-control quantity update-cart" />
-                         </td>
-                         <td data-th="Subtotal" class="text-center">Ksh. {{ $details['price'] * $details['quantity'] }}
-                         </td>
-                         <td class="actions" data-th="">
-                             <button class="btn btn-danger btn-sm remove-from-cart">
-                                 Remove
-                             </button>
-                         </td>
-                     </tr>
-                 @endforeach
-             @endif
-         </tbody>
-         <tfoot>
-             <tr>
-                 <td colspan="5" class="text-right">
-                     <h3><strong style="color: black">Total Ksh. {{ $total }}</strong></h3>
-                 </td>
-             </tr>
-             <tr>
-                 <td style="color: black" colspan="5" class="text-right">
-                     <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
-                         Shopping</a>
-                     <div class="btn btn-success">
-                         <button type="submit" onclick="location.href='{{ url('checkout') }}'">
-                             Checkout 
+                             </td>
+                             <td data-th="Name" scope="col"
+                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                 {{ $details['name'] }}
+                             </td>
+                             <td scope="col"
+                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                 data-th="Price">
+                                 Ksh. {{ $details['price'] }}
+                             </td>
+                             <td scope="col"
+                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                 data-th="Quantity">
+                                 <input type="number" value="{{ $details['quantity'] }}"
+                                     class="form-control quantity update-cart" />
+                             </td>
+                             <td scope="col"
+                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                 data-th="Subtotal" class="text-center">Ksh.
+                                 {{ $details['price'] * $details['quantity'] }}
+                             </td>
+                             <td scope="col"
+                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider actions"
+                                 data-th="">
+                                 <button class="btn btn-danger btn-sm remove-from-cart">
+                                     Remove
+                                 </button>
+                             </td>
+                         </tr>
+                     @endforeach
+                 @endif
+             </tbody>
+             <tfoot>
+                 <tr>
+                     <td colspan="5" scope="col"
+                         class="text-right px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider actions">
+                         <h3><strong style="color: black">Total Ksh. {{ $total }}</strong></h3>
+                     </td>
+                 </tr>
+                 <tr>
+                     <td style="color: black" colspan="5" class="text-right">
+                         <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
+                             Shopping</a>
+
+                         <button onclick="location.href='{{ url('checkout') }}'" class="btn btn-success">
+                             Checkout
                          </button>
+                     </td>
+                 </tr>
+             </tfoot>
+         </table>
+     @else
+         <div class="empty_cart align-items-center" style="text-align: center">
+             <p style="color: black">
+                 Oops! You dont have anything in your cart yet! <br>
+                 <Button class="">
+                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                             <i style="color: black; padding-right:5px" class='bx bx-cart-alt trick_icon'></i>
+                             {{ __('Shop here') }}
+                         </x-nav-link>
                      </div>
-                 </td>
-             </tr>
-         </tfoot>
-     </table>
+                 </Button>
+             </p>
+         </div>
+     @endif
  @endsection
 
  @section('scripts')

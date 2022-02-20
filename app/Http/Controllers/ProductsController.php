@@ -141,9 +141,16 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+
+    public function destroy(Request $request, $id) {
+        // $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        // $cart = new Cart($oldCart);
+        // $cart->delete($id);
+        // $request->session()->put('cart', $cart);
+        // return redirect()->route('checkout');
+
+        $request->session()->forget('cart'); 
+
     }
 }
  

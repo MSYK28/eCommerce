@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller\OrdersController;
 use App\Models\Products;
+use App\Models\Orders;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +40,13 @@ Route::middleware('auth', 'verified')->prefix('admin')->group(
         Route::get('/index', function () {return view('admin.index');});
         Route::get('/pages', function () {return view('admin.pages');});
 });
-
-//PRODUCTS CONTROLLER
-
-
+    
+    
 //SEARCH CONTROLLER
 Route::get('/search_results', [App\Http\Controllers\ProductsController::class, 'store'])->name('search_results');
+
+//ORDERS CONTROLLER
+Route::get('/orders', [App\Http\Controllers\OrdersController::class, 'index'])->middleware(['auth'])->name('orders');
 
 //CART CONTROLLER
 Route::get('/dashboard', [App\Http\Controllers\ProductsController::class, 'index'])->middleware('auth')->name('dashboard');
@@ -52,5 +55,6 @@ Route::get('cart', [App\Http\Controllers\ProductsController::class, 'cart'])->na
 Route::get('add-to-cart/{id}', [App\Http\Controllers\ProductsController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [App\Http\Controllers\ProductsController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [App\Http\Controllers\ProductsController::class, 'remove'])->name('remove.from.cart');
+// Route::delete('checkout-from-cart', [App\Http\Controllers\ProductsController::class, 'destroy']);
 
 require __DIR__.'/auth.php';
