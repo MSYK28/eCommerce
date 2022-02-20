@@ -23,6 +23,10 @@
                                         </th>
                                         <th scope="col"
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
+                                            User ID
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                                             Name
                                         </th>
                                         <th scope="col"
@@ -46,6 +50,10 @@
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 <p>{{ $order->created_at }}</p>
+                                            </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                <p>{{ $order->user_id }}</p>
                                             </th>
                                             <th scope="col"
                                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -76,3 +84,12 @@
     </div>
 
 </x-app-layout>
+
+
+@section('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#table_id').DataTable();
+        });
+    </script>
+@endsection

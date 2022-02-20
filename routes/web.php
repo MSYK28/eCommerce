@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controller\OrdersController;
+use App\Http\Controllers\Controller\PagesController;
 use App\Models\Products;
 use App\Models\Orders;
+use App\Models\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,14 @@ Route::middleware('auth', 'verified')->prefix('admin')->group(
     function(){
         Route::get('/index', function () {return view('admin.index');});
         Route::get('/pages', function () {return view('admin.pages');});
+});
+
+//PAGES $DATA TABLES CONTROLLER
+Route::middleware('auth', 'verified')->prefix('admin/pages')->group(
+    function(){
+        Route::get('/users', [App\Http\Controllers\PagesController::class, 'users'])->name('admin.pages.users');
+        Route::get('/products', [App\Http\Controllers\PagesController::class, 'products'])->name('admin.pages.products');
+        Route::get('/orders', [App\Http\Controllers\PagesController::class, 'orders'])->name('admin.pages.orders');
 });
     
     

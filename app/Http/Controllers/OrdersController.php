@@ -14,7 +14,7 @@ class OrdersController extends Controller
         $users = auth()->user()->pluck('id');
 
         $orders = Orders::whereIn('id', $users)->with('user')->latest()->paginate(6);
-
+        
         return view('orders', compact('orders'));
     }
 
