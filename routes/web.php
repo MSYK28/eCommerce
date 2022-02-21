@@ -41,9 +41,10 @@ Route::middleware('auth', 'verified')->prefix('admin')->group(
     function(){
         Route::get('/index', function () {return view('admin.index');});
         Route::get('/pages', function () {return view('admin.pages');});
+        // Route::get('/pages', [App\Http\Controllers\PagesController::class, 'showAll'])->name('admin.pages');
 });
 
-//PAGES $DATA TABLES CONTROLLER
+//PAGES & DATA TABLES CONTROLLER
 Route::middleware('auth', 'verified')->prefix('admin/pages')->group(
     function(){
         Route::get('/users', [App\Http\Controllers\PagesController::class, 'users'])->name('admin.pages.users');

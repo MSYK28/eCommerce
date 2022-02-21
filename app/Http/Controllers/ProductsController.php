@@ -141,6 +141,11 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function checkout(){
+
+        
+        return view('checkout');
+    }
 
     public function destroy(Request $request, $id) {
         // $oldCart = Session::has('cart') ? Session::get('cart') : null;

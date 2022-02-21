@@ -13,10 +13,10 @@
              <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                  <div class="p-6 bg-white border-b border-gray-200">
                      <div class="flex flex-wrap -mx-1 overflow-hidden sm:-mx-px lg:-mx-3">
-                         <div class="my-1 px-1 w-1/3 overflow-hidden sm:my-px sm:px-px lg:my-3 lg:px-3 lg:w-1/2">
+                         <div class="my-1 px-1 w-3/3 overflow-hidden sm:my-px sm:px-px lg:my-3 lg:px-3 lg:w-1/2">
 
                              <table id="table_id"
-                                 class="divide-y divide-gray-200 border-b border gray-200 sm:rounded-lg">
+                                 class="min-w-full divide-y divide-gray-200 border-b border gray-200 sm:rounded-lg">
                                  <thead class="bg-gray-50">
                                      <tr>
                                          <th scope="col"

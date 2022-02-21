@@ -30,4 +30,13 @@ class PagesController extends Controller
         
         return view('admin.pages.orders', compact('orders'));
     }
+
+    public function showAll()
+    {       
+         $orders = Orders::all();
+         $products = Products::all();
+         $users = User::all();
+        
+        return view('admin.pages.orders', compact('orders', 'products', 'users'));
+    }
 }
